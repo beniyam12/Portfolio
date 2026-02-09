@@ -1,249 +1,424 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Beniyam Demissie - Portfolio</title>
         <style>
-    
-     body {
-        padding-top: 25px;
-        background-color: #eeece5; 
-        color: #333; 
-        font-family: Arial, sans-serif; 
-        margin: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .section {
-            padding: 100px 20px;
-        }
-        #home {
-            background-color: #eeece5;
-        }
-        #about {
-            background-color: #384e72;
-        }
-        #projects {
-            background-color: #eeece5;
-        }
-        #contacts {
-            background-color: #384e72;
-        }
-        
+body {
+    background-color: #eeece5;
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding-top: 60px;
+}
 
-       
-     }
+.section {
+    padding: 80px 40px;
+    min-height: 100vh;
+}
 
+#home {
+    background-color: #eeece5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#about {
+    background-color: #384e72;
+}
 
+#projects {
+    background-color: #eeece5;
+}
+
+#contacts {
+    background-color: #384e72;
+}
 
 .navbar {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: sticky;
-    transition: color 0.3s ease;
-    
-    
-    
-    
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(238, 236, 229, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 12px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-
 
 .navbar .left-buttons {
-    display: flex; 
-    gap: 10px; 
-    
-    
-    
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+}
 
-.navbar a:visited,
-.navbar a:active,
 .navbar button {
-    all: unset;
-    display: inline-block;
+    background: none;
+    border: none;
     cursor: pointer;
-    font-weight: bold;
-    padding: 7px;
-    margin-top: -15px;
+    font-weight: 600;
+    padding: 8px 16px;
+    font-size: 15px;
+    color: #333;
+    transition: all 0.2s ease;
+    border-radius: 6px;
 }
 
 .navbar button:hover {
-    filter: drop-shadow(0 0 10px #384e72);
+    background-color: rgba(56, 78, 114, 0.1);
+    transform: translateY(-1px);
+}
+
+.navbar button h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.navbar .left-buttons button:first-child {
+    padding-left: 8px;
 }
 
 .navbar button:last-child {
-    margin-left: auto; 
+    padding-right: 8px;
 }
 
+.navbar button img {
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.navbar button:hover img {
+    transform: scale(1.1);
+}
+
+.image {
+    margin-bottom: 40px;
+}
 
 .image img {
-    width: 350px;
-    height:auto;
+    width: 300px;
+    height: 300px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 50%;
-    
-    
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
 
+#home h1 {
+    text-align: center;
+    font-size: 32px;
+    line-height: 1.5;
+    max-width: 800px;
+    font-weight: 400;
+    color: #333;
+}
+
+#about h1 {
+    color: #eeece5;
+    font-size: 36px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+#about h3 {
+    color: #c0bcbc;
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 900px;
+    font-weight: 400;
+}
+
+#projects h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+#projects > p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #666;
 }
 
 .projects {
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
     justify-content: flex-start;
-    
 }
-.projects button{
-    border-radius: 7%;
-    margin: 16px;
+
+.projects button {
+    border: none;
+    border-radius: 12px;
     width: 350px;
     height: 250px;
     background-color: #B88A44;
-    font-family: "Playfair Display";
+    font-family: Arial, sans-serif;
     font-size: 22px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 20px;
 }
 
 .projects button:hover {
-
-    filter: drop-shadow(0 0 10px #16140e);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
+
+.projects button img {
+    border-radius: 50%;
+    margin-bottom: 12px;
+    object-fit: cover;
+}
+
+.projects button h3 {
+    margin: 12px 0 8px 0;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.projects button h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+.projects a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#contacts p {
+    color: #c0bcbc;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.contacts {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+}
+
 .contacts button {
-    all: unset;
-    display: inline-block;
+    background: none;
+    border: none;
     cursor: pointer;
-
-}
-.contacts :hover{
-    filter: drop-shadow( 0 0 10px #eeece5)
-
+    padding: 8px;
+    transition: all 0.2s ease;
+    border-radius: 8px;
 }
 
-    </style>
+.contacts button:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 12px rgba(238, 236, 229, 0.3));
+}
+
+.contacts button img {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 24px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+
+    .navbar .left-buttons {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .image img {
+        width: 240px;
+        height: 240px;
+    }
+
+    #home h1 {
+        font-size: 24px;
+    }
+
+    #about h1,
+    #projects h1 {
+        font-size: 28px;
+    }
+
+    #about h3 {
+        font-size: 16px;
+    }
+
+    .projects {
+        justify-content: center;
+    }
+
+    .projects button {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 120px;
+    }
+
+    .navbar button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .navbar button h4 {
+        font-size: 14px;
+    }
+
+    #home h1 {
+        font-size: 20px;
+    }
+}
+        </style>
     </head>
 
     <body>
         <div class="navbar">
             <div class="left-buttons">
-                <button style="padding-left: 25px;"> 
-                    <a href="#home" style="text-decoration: none;">
-                        <h4>Home</h4>
-                    </a> 
                 <button>
-                    <a href="#projects" style="text-decoration: none;">
+                    <a href="#home">
+                        <h4>Home</h4>
+                    </a>
+                </button>
+                <button>
+                    <a href="#projects">
                         <h4>Projects</h4>
                     </a>
                 </button>
                 <button>
-                <a href="#contacts" style="text-decoration: none;">
-                 <h4>Contacts</h4> 
-                </a>
-                </button> 
+                    <a href="#contacts">
+                        <h4>Contacts</h4>
+                    </a>
+                </button>
                 <button>
-                    <a href="https://www.dropbox.com/scl/fi/987a75410y9ydyhr8gfuu/Beniyam-Demissie-Technical-Resume.pdf?rlkey=kb60uit9xbv76oe62bhlg15ld&st=w0c1cbu1&dl=0" style="text-decoration: none;">
-                        <h4>Resume</h4> 
+                    <a href="https://www.dropbox.com/scl/fi/yxjt8de9xj0mij9jv9n1g/Beniyam-Demissie-Technical-Resume.pdf?rlkey=u22u74jywdnwrtzzm02snyhtd&st=7eo5yfk1&dl=0" target="_blank">
+                        <h4>Resume</h4>
                     </a>
                 </button>
             </div>
-            <a href="https://github.com/beniyam12">
-            <button style="padding-right: 20px;"><img src="images/github_logo.png" width="25"></button>
+            <a href="https://github.com/beniyam12" target="_blank">
+                <button>
+                    <img src="images/github_logo.png" width="25" alt="GitHub">
+                </button>
             </a>
         </div>
-    
+
         <div id="home" class="section">
-        <div class = "image"> <img src = "images/headshot.png" > </div>
-
-        <h1 style = 
-        "text-align: center;
-        font-size: 36px;
-        ">
-        Hi, I'm Beniyam. This is the space where <br>
-        I share my projects and the work I'm <br>
-        passionate about in tech and software development. </h1>
-        </div>
-        <div id="about" class="section">
-            
-            <h1 style="color: #c0bcbc; font-family: IBM Plex Sans;">About me</h1>
-
-            <h3 style="color: #c0bcbc; font-family: 'Inter', sans-serif;
-            font: weight 250px;;">I am a dedicated Computer Science student at the University of Texas 
-                at San Antonio with a strong passion for software development, AI engineering, 
-                and machine learning. My journey began in middle school with self-paced learning, 
-                which evolved into professional instruction and hands-on project experience.
-                 I have proficiency in Python, Java, Kotlin, HTML, and CSS, and I am currently 
-                 expanding my expertise in AI and Machine Learning to specialize in these fields. 
-                 I am eager to apply my skills in a dynamic, growth-oriented environment.</h3>           
-        
-        
-        </div>
-        
-        <div id="projects" class="section">
-            <h1 style="margin-top: -60px;">Projects</h1>
-            <p>Here are some of the things I've built.</p>
-           
-         <div class = "projects" > 
-
-            <button > 
-                <img src="images/headshot.png" alt="Project Image" width="75" style="padding-top: 10px;border-radius: 25%;">
-                
-                <h3>Portfolio</h3>  
-                <h5 style = "padding-bottom: 20px;" >The site you are currently on showcasing some of my work</h5> 
-            </button>
-            <a href="https://www.flavorquest.blog" target="_blank" style="text-decoration: none;">
-                <button  > 
-                    <img src="images/Flavor_copy.png" alt="Project Image" width="75" style="padding-top: 10px;border-radius: 25%;">
-                    
-                    <h3>Flavor Quest </h3>
-                    <h5 style = "padding-bottom: 20px;"> Recipe finder app with ingredients in your pantry</h5> 
-                </button>
-            </a>
-
-            <a href="https://www.cinescope.blog" target="_blank" style="text-decoration: none;">
-                <button  > 
-                    <img src="images/cinescope_copy.png" alt="Project Image" width="75" style="padding-top: 10px;border-radius: 25%;">
-                    <h3>Cine Scope </h3>
-                    <h5 style = "padding-bottom: 20px;"> Web app for searching movies and TV shows with detailed information</h5> 
-                </button>
-            </a>
-
-            <button> 
-                <img src="images/under_construction.png" width="75" style="padding-top: 35px; border-radius: 25%;">
-                <h3>Coming soon... </h3>
-                <h5 style = "padding-bottom: 20px;" >There is more work coming </h5> 
-            </button>
-            
-
-        </div>
-
-        </div>
-        <div id="contacts" class="section">
-            
-
-            <p style="color: #c0bcbc; margin-top: -60px;"> Reach me at: </p>
-
-            <p style="color: #c0bcbc;"> Demissiebeniyam@gmail.com</p>
-            
-            <div class="contacts">
-
-            <a href="https://github.com/beniyam12" target="_blank" style="text-decoration: none;">   
-                <button> <img src = "images/github_logo.png" width="25" style="padding-right: 10px;"> </button> 
-            </a>
-
-            <a href="https://www.linkedin.com/in/beniyam-demissie/" target="_blank" style="text-decoration: none;">
-                <button> <img src = "images/Linkedin_logo.png"width="35" style="margin-right: 10px; margin-bottom: -6px;">  </button> 
-            </a>
-            
-            
-
+            <div class="image">
+                <img src="images/headshot.png" alt="Beniyam Demissie">
             </div>
-            
-            
+            <h1>
+                Hi, I'm Beniyam. This is the space where<br>
+                I share my projects and the work I'm<br>
+                passionate about in tech and software development.
+            </h1>
         </div>
 
+        <div id="about" class="section">
+            <h1>About me</h1>
+            <h3>
+                I am a dedicated Computer Science student at the University of Texas
+                at San Antonio with a strong passion for software development, AI engineering,
+                and machine learning. My journey began in middle school with self-paced learning,
+                which evolved into professional instruction and hands-on project experience.
+                I have proficiency in Python, Java, Kotlin, HTML, and CSS, and I am currently
+                expanding my expertise in AI and Machine Learning to specialize in these fields.
+                I am eager to apply my skills in a dynamic, growth-oriented environment.
+            </h3>
+        </div>
 
+        <div id="projects" class="section">
+            <h1>Projects</h1>
+            <p>Here are some of the things I've built.</p>
+
+            <div class="projects">
+                <button>
+                    <img src="images/headshot.png" alt="Portfolio" width="75">
+                    <h3>Portfolio</h3>
+                    <h5>The site you are currently on showcasing some of my work</h5>
+                </button>
+
+                <a href="https://www.flavorquest.blog" target="_blank">
+                    <button>
+                        <img src="images/Flavor_copy.png" alt="Flavor Quest" width="75">
+                        <h3>Flavor Quest</h3>
+                        <h5>Recipe finder app with ingredients in your pantry</h5>
+                    </button>
+                </a>
+
+                <a href="https://www.cinescope.blog" target="_blank">
+                    <button>
+                        <img src="images/cinescope_copy.png" alt="Cine Scope" width="75">
+                        <h3>Cine Scope</h3>
+                        <h5>Web app for searching movies and TV shows with detailed information</h5>
+                    </button>
+                </a>
+
+                <button>
+                    <img src="images/under_construction.png" alt="Coming Soon" width="75">
+                    <h3>Coming soon...</h3>
+                    <h5>There is more work coming</h5>
+                </button>
+            </div>
+        </div>
+
+        <div id="contacts" class="section">
+            <p>Reach me at:</p>
+            <p>Demissiebeniyam@gmail.com</p>
+
+            <div class="contacts">
+                <a href="https://github.com/beniyam12" target="_blank">
+                    <button>
+                        <img src="images/github_logo.png" width="25" alt="GitHub">
+                    </button>
+                </a>
+
+                <a href="https://www.linkedin.com/in/beniyam-demissie/" target="_blank">
+                    <button>
+                        <img src="images/Linkedin_logo.png" width="35" alt="LinkedIn">
+                    </button>
+                </a>
+            </div>
+        </div>
     </body>
- 
 </html>
