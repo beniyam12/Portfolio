@@ -1,424 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Beniyam Demissie - Portfolio</title>
-        <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beniyam Demissie, Software Developer</title>
+<meta name="description" content="Portfolio of Beniyam Demissie, Computer Science student at UTSA building web apps and AI projects: Cairn Bible, Flavor Quest, Cine Scope.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23222f49'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23e8b64c' text-anchor='middle'%3EBD%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#faf8f3;
+  --paper-2:#f1ece1;
+  --ink:#1c2534;
+  --muted:#5b6575;
+  --line:#e3dac8;
+  --navy:#222f49;
+  --navy-deep:#1a2338;
+  --gold:#b8862f;
+  --gold-soft:#f4e7c9;
+  --card:#ffffff;
+  --shadow:0 10px 30px rgba(28,37,52,.08);
+  --shadow-lg:0 18px 50px rgba(28,37,52,.14);
+  --radius:18px;
+  --max:1100px;
 }
-
-body {
-    background-color: #eeece5;
-    color: #333;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding-top: 60px;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
-
-.section {
-    padding: 80px 40px;
-    min-height: 100vh;
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(700px 320px at 12% -4%,rgba(184,134,47,.14),transparent 60%),
+    radial-gradient(800px 380px at 95% 6%,rgba(34,47,73,.10),transparent 60%),
+    radial-gradient(900px 500px at 50% 110%,rgba(184,134,47,.08),transparent 60%);
 }
+::selection{background:#222f49;color:#faf8f3}
+a{color:inherit}
+img{display:block;max-width:100%}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;z-index:200}
+.skip:focus{left:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-#home {
-    background-color: #eeece5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,248,243,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:.2px}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--navy);color:#e8b64c;display:grid;place-items:center;font-family:Georgia,serif;font-size:16px;flex:none}
+.brand small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.links{margin-left:auto;display:flex;align-items:center;gap:4px}
+.links a{text-decoration:none;font-size:14.5px;font-weight:600;padding:8px 12px;border-radius:9px;color:var(--ink)}
+.links a:hover{background:rgba(34,47,73,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:14.5px;border-radius:11px;padding:10px 16px;border:1px solid transparent;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 8px 20px rgba(34,47,73,.25)}
+.btn-primary:hover{background:var(--navy-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--navy);transform:translateY(-1px)}
+.btn-sm{padding:8px 13px;font-size:13.5px}
+.icon-btn{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;transition:transform .15s ease}
+.icon-btn:hover{transform:translateY(-1px);border-color:var(--navy)}
+.icon-btn img{width:19px;height:19px;object-fit:contain}
+.menu-btn{display:none;margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:10px;width:40px;height:38px;font-size:18px;cursor:pointer}
+
+/* Hero */
+.hero{padding:72px 0 30px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:var(--shadow)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2e9e5b;box-shadow:0 0 0 4px rgba(46,158,91,.15)}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-.01em;margin:20px 0 14px;font-weight:700}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:17.5px;color:var(--muted);max-width:56ch}
+.lede strong{color:var(--ink)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:center}
+.email-copy{display:inline-flex;align-items:center;gap:9px;background:none;border:none;padding:10px 2px;font:inherit;font-size:15px;color:var(--muted);cursor:pointer}
+.email-copy .addr{font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.email-copy:hover .addr{text-decoration-color:var(--gold)}
+.email-copy svg{flex:none}
+.email-copy:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(12px);background:var(--navy);color:#fff;font-size:14px;font-weight:600;border-radius:999px;padding:10px 20px;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:14px;color:var(--muted)}
+.meta-row b{color:var(--ink)}
+.portrait{position:relative;justify-self:center;width:min(320px,80vw)}
+.portrait img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:28px;border:6px solid #fff;box-shadow:var(--shadow-lg)}
+.portrait::after{content:"";position:absolute;inset:-14px;border:1.5px dashed rgba(184,134,47,.55);border-radius:36px;pointer-events:none}
+.scroll-hint{margin-top:44px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.scroll-hint i{display:block;width:44px;height:1px;background:var(--line)}
+
+/* Sections */
+.section{padding:56px 0}
+.kicker{font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.h2{font-family:Georgia,serif;font-size:clamp(28px,3.4vw,38px);line-height:1.15;margin:8px 0 10px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:16.5px;max-width:68ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:26px}
+.about-copy{padding:30px}
+.about-copy p{color:#3c4658;font-size:16px;margin-top:12px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.fact b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.skills{padding:30px}
+.skills h3,.about-copy h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chip{font-size:13.5px;font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+.chip.hot{background:var(--navy);border-color:var(--navy);color:#fff}
+.mini-list{list-style:none;margin-top:16px;display:grid;gap:10px;font-size:14.5px;color:#3c4658}
+.mini-list li{display:flex;gap:10px;align-items:flex-start}
+.tick{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold-soft);color:var(--gold);display:grid;place-items:center;font-size:13px;font-weight:800;margin-top:2px}
+
+/* Projects */
+.proj-head{display:flex;flex-wrap:wrap;align-items:end;gap:14px;justify-content:space-between}
+.count{font-size:13.5px;font-weight:700;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px}
+.featured{margin-top:24px;display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden}
+.featured-copy{padding:34px}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#2e7d4f;background:#e7f4ec;border:1px solid #bfe3cd;border-radius:999px;padding:6px 12px}
+.featured-copy h3{font-family:Georgia,serif;font-size:30px;margin:14px 0 8px}
+.tagline{color:var(--gold);font-weight:700;font-size:15px}
+.featured-copy p.desc{color:#3c4658;margin-top:10px;font-size:15.5px}
+.feat-list{list-style:none;margin:18px 0 6px;display:grid;gap:9px;font-size:14.5px;color:#3c4658}
+.feat-list b{color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+.tag{font-size:12.5px;font-weight:700;background:var(--paper-2);border:1px solid var(--line);color:#4a5468;border-radius:999px;padding:5px 11px}
+.mock{background:linear-gradient(160deg,#222f49 0%,#31436a 60%,#3d5483 100%);padding:28px;display:flex;align-items:center;color:#f2ead8}
+.mock-window{width:100%;background:#faf6ec;border-radius:14px;overflow:hidden;box-shadow:0 20px 45px rgba(0,0,0,.35);color:#2a2118}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#38040e;color:#f4e9d6;font-size:12.5px;font-weight:700}
+.mock-bar i{width:9px;height:9px;border-radius:50%;background:#d9a648;display:block}
+.mock-bar i:nth-child(2){background:#8a94a8}.mock-bar i:nth-child(3){background:#4c5a76}
+.mock-body{padding:16px 18px}
+.mock-ref{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6d2f;font-weight:800}
+.mock-verse{font-family:Georgia,serif;font-size:15px;margin-top:6px;line-height:1.55}
+.mock-note{margin-top:12px;background:#fff;border-left:3px solid #b8862f;border-radius:0 10px 10px 0;padding:10px 12px;font-size:13px;color:#4a3f2c}
+.mock-note b{color:#7a5c1e}
+.mock-row{display:flex;gap:8px;margin-top:12px}
+.mock-pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:5px 10px;background:#f1e6cb;color:#6b551f}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.p-card{overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.p-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.thumb{height:170px;display:grid;place-items:center;background:linear-gradient(150deg,var(--paper-2),#fff);border-bottom:1px solid var(--line);overflow:hidden}
+.thumb img{width:104px;height:104px;object-fit:cover;border-radius:24px;box-shadow:var(--shadow);border:4px solid #fff}
+.thumb.cine{background:linear-gradient(150deg,#1c2534,#31436a)}
+.thumb.flavor{background:linear-gradient(150deg,#f6ddb0,#e9b96a)}
+.thumb.me{background:linear-gradient(150deg,#e8e2d2,#cfc5ab)}
+.p-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.p-body h3{font-size:19px}
+.p-body p{font-size:14.5px;color:var(--muted)}
+.p-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:12px}
+.visit{font-weight:800;font-size:14px;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
+.visit:hover{color:var(--gold)}
+.ext{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.06em}
+
+/* Contact */
+.contact{margin-top:8px;background:linear-gradient(165deg,var(--navy) 0%,var(--navy-deep) 70%);color:#eef1f6;border-radius:22px;padding:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.08)}
+.contact h2{font-family:Georgia,serif;font-size:clamp(26px,3vw,34px);line-height:1.2}
+.contact p{color:#b9c2d4;margin-top:10px}
+.mail-card{margin-top:20px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mail-card a{color:#fff;font-weight:700;text-decoration:none;word-break:break-all}
+.copy{margin-left:auto;background:#e8b64c;border:none;color:#241d08;font-weight:800;font-size:13px;border-radius:9px;padding:9px 13px;cursor:pointer}
+.copy:hover{filter:brightness(1.05)}
+.socials{display:grid;gap:12px;align-content:center}
+.soc{display:flex;align-items:center;gap:13px;background:#fff;color:var(--ink);text-decoration:none;border-radius:14px;padding:13px 15px;font-weight:700;font-size:15px}
+.soc:hover{transform:translateY(-1px)}
+.soc small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.soc img{width:26px;height:26px;object-fit:contain}
+.soc .go{margin-left:auto;color:var(--gold);font-weight:800}
+
+footer{padding:30px 0 44px;color:var(--muted);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px}
+
+/* Reveal (progressive enhancement only) */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+  .reveal{opacity:1;transform:none}
 }
-
-#about {
-    background-color: #384e72;
+@media (max-width:900px){
+  .hero-grid,.about-grid,.featured,.contact{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  .portrait{order:-1;width:min(240px,64vw)}
+  .mock{padding:20px}
 }
-
-#projects {
-    background-color: #eeece5;
+@media (max-width:640px){
+  .links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:10px 16px 16px;flex-direction:column;align-items:stretch}
+  .links.open{display:flex}
+  .links a{padding:11px 12px}
+  .menu-btn{display:block}
+  .nav-cta{display:none}
+  .grid{grid-template-columns:1fr}
+  .hero{padding-top:46px}
+  .about-copy,.skills,.featured-copy{padding:24px}
+  .contact{padding:28px 22px}
+  .facts{grid-template-columns:1fr}
 }
-
-#contacts {
-    background-color: #384e72;
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#12100c;
+    --paper-2:#1d1a13;
+    --ink:#f2ecdd;
+    --muted:#b6ad96;
+    --line:#322c1f;
+    --card:#1a1712;
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+    --shadow-lg:0 18px 50px rgba(0,0,0,.5);
+  }
+  body::before{background:radial-gradient(700px 320px at 12% -4%,rgba(232,182,76,.12),transparent 60%),radial-gradient(800px 380px at 95% 6%,rgba(232,182,76,.07),transparent 60%)}
+  .nav{background:rgba(18,16,12,.88)}
+  .links a:hover{background:rgba(255,255,255,.07)}
+  .eyebrow,.count{background:#1a1712}
+  .btn-ghost{color:var(--ink)}
+  .icon-btn{background:#1a1712}
+  .about-copy p,.feat-list,.featured-copy p.desc,.mini-list li{color:#cfc7b2}
+  .fact,.chip{background:#14110c}
+  .thumb{background:linear-gradient(150deg,#221d12,#171410)}
+  .p-body p{color:var(--muted)}
+  .visit{color:#e8b64c}
+  .mock-window{box-shadow:0 20px 45px rgba(0,0,0,.6)}
+  ::selection{background:#e8b64c;color:#241d08}
 }
+</style>
+</head>
+<body>
+<a class="skip" href="#projects">Skip to projects</a>
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(238, 236, 229, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 12px 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-mark" aria-hidden="true">BD</span>
+      <span>Beniyam Demissie<small>Software Developer</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <nav class="links" id="navLinks" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.dropbox.com/scl/fi/yxjt8de9xj0mij9jv9n1g/Beniyam-Demissie-Technical-Resume.pdf?rlkey=u22u74jywdnwrtzzm02snyhtd&st=7eo5yfk1&dl=0" target="_blank" rel="noopener">Resume</a>
+    </nav>
+    <span class="nav-cta" style="display:flex;gap:10px;align-items:center;margin-left:12px">
+      <a class="btn btn-primary btn-sm" href="#projects">View work</a>
+      <a class="icon-btn" href="https://github.com/beniyam12" target="_blank" rel="noopener" aria-label="GitHub profile">
+        <img src="images/github_logo.png" alt="" width="19" height="19">
+      </a>
+    </span>
+  </div>
+</header>
 
-.navbar .left-buttons {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.navbar a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.navbar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    padding: 8px 16px;
-    font-size: 15px;
-    color: #333;
-    transition: all 0.2s ease;
-    border-radius: 6px;
-}
-
-.navbar button:hover {
-    background-color: rgba(56, 78, 114, 0.1);
-    transform: translateY(-1px);
-}
-
-.navbar button h4 {
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.navbar .left-buttons button:first-child {
-    padding-left: 8px;
-}
-
-.navbar button:last-child {
-    padding-right: 8px;
-}
-
-.navbar button img {
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.navbar button:hover img {
-    transform: scale(1.1);
-}
-
-.image {
-    margin-bottom: 40px;
-}
-
-.image img {
-    width: 300px;
-    height: 300px;
-    display: block;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-#home h1 {
-    text-align: center;
-    font-size: 32px;
-    line-height: 1.5;
-    max-width: 800px;
-    font-weight: 400;
-    color: #333;
-}
-
-#about h1 {
-    color: #eeece5;
-    font-size: 36px;
-    margin-bottom: 24px;
-    font-weight: 600;
-}
-
-#about h3 {
-    color: #c0bcbc;
-    font-size: 18px;
-    line-height: 1.8;
-    max-width: 900px;
-    font-weight: 400;
-}
-
-#projects h1 {
-    font-size: 36px;
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-#projects > p {
-    font-size: 18px;
-    margin-bottom: 40px;
-    color: #666;
-}
-
-.projects {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: flex-start;
-}
-
-.projects button {
-    border: none;
-    border-radius: 12px;
-    width: 350px;
-    height: 250px;
-    background-color: #B88A44;
-    font-family: Arial, sans-serif;
-    font-size: 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    padding: 20px;
-}
-
-.projects button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.projects button img {
-    border-radius: 50%;
-    margin-bottom: 12px;
-    object-fit: cover;
-}
-
-.projects button h3 {
-    margin: 12px 0 8px 0;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.projects button h5 {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    text-align: center;
-    line-height: 1.4;
-    opacity: 0.95;
-}
-
-.projects a {
-    text-decoration: none;
-    color: inherit;
-}
-
-#contacts p {
-    color: #c0bcbc;
-    font-size: 18px;
-    margin-bottom: 16px;
-}
-
-.contacts {
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.contacts button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    transition: all 0.2s ease;
-    border-radius: 8px;
-}
-
-.contacts button:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 4px 12px rgba(238, 236, 229, 0.3));
-}
-
-.contacts button img {
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .section {
-        padding: 60px 24px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px 16px;
-    }
-
-    .navbar .left-buttons {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .image img {
-        width: 240px;
-        height: 240px;
-    }
-
-    #home h1 {
-        font-size: 24px;
-    }
-
-    #about h1,
-    #projects h1 {
-        font-size: 28px;
-    }
-
-    #about h3 {
-        font-size: 16px;
-    }
-
-    .projects {
-        justify-content: center;
-    }
-
-    .projects button {
-        width: 100%;
-        max-width: 350px;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding-top: 120px;
-    }
-
-    .navbar button {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-
-    .navbar button h4 {
-        font-size: 14px;
-    }
-
-    #home h1 {
-        font-size: 20px;
-    }
-}
-        </style>
-    </head>
-
-    <body>
-        <div class="navbar">
-            <div class="left-buttons">
-                <button>
-                    <a href="#home">
-                        <h4>Home</h4>
-                    </a>
-                </button>
-                <button>
-                    <a href="#projects">
-                        <h4>Projects</h4>
-                    </a>
-                </button>
-                <button>
-                    <a href="#contacts">
-                        <h4>Contacts</h4>
-                    </a>
-                </button>
-                <button>
-                    <a href="https://www.dropbox.com/scl/fi/yxjt8de9xj0mij9jv9n1g/Beniyam-Demissie-Technical-Resume.pdf?rlkey=u22u74jywdnwrtzzm02snyhtd&st=7eo5yfk1&dl=0" target="_blank">
-                        <h4>Resume</h4>
-                    </a>
-                </button>
-            </div>
-            <a href="https://github.com/beniyam12" target="_blank">
-                <button>
-                    <img src="images/github_logo.png" width="25" alt="GitHub">
-                </button>
-            </a>
+<main id="top" class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Open to full time SWE roles</span>
+        <h1>Hi, I am Beniyam</h1>
+        <p class="lede">I am a <strong>Computer Science student at UT San Antonio</strong> working across web apps, AI, and machine learning. This is the space where I share my projects and the work I am passionate about in tech and software development.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">Explore projects <span aria-hidden="true">&darr;</span></a>
+          <button class="email-copy" id="heroCopy" type="button" data-email="Demissiebeniyam@gmail.com" title="Click to copy email" aria-label="Copy email address to clipboard">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span class="addr">Demissiebeniyam@gmail.com</span>
+          </button>
         </div>
-
-        <div id="home" class="section">
-            <div class="image">
-                <img src="images/headshot.png" alt="Beniyam Demissie">
-            </div>
-            <h1>
-                Hi, I'm Beniyam. This is the space where<br>
-                I share my projects and the work I'm<br>
-                passionate about in tech and software development.
-            </h1>
+        <div class="meta-row">
+          <span><b>4</b> shipped projects</span>
+          <span><b>Focus:</b> web apps, AI, ML</span>
+          <span><b>School:</b> UTSA Computer Science</span>
         </div>
+      </div>
+      <div class="portrait">
+        <img src="images/beniyam_portfolio.jpg" alt="Portrait of Beniyam Demissie" width="350" height="233" fetchpriority="high">
+      </div>
+    </div>
+    <div class="scroll-hint"><i></i> Scroll for about and projects</div>
+  </section>
 
-        <div id="about" class="section">
-            <h1>About me</h1>
-            <h3>
-                I am a dedicated Computer Science student at the University of Texas
-                at San Antonio with a strong passion for software development, AI engineering,
-                and machine learning. My journey began in middle school with self-paced learning,
-                which evolved into professional instruction and hands-on project experience.
-                I have proficiency in Python, Java, Kotlin, HTML, and CSS, and I am currently
-                expanding my expertise in AI and Machine Learning to specialize in these fields.
-                I am eager to apply my skills in a dynamic, growth-oriented environment.
-            </h3>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <p class="kicker">About me</p>
+    <h2 class="h2">A developer focused on real products</h2>
+    <p class="sub">My journey began in middle school with self-paced learning, which grew into professional instruction and hands-on project experience. Now I am expanding into AI and machine learning, and I am eager to apply my skills in a dynamic, growth-oriented environment.</p>
+    <div class="about-grid">
+      <article class="card about-copy reveal">
+        <h3>Background</h3>
+        <p>I am a dedicated Computer Science student at the University of Texas at San Antonio with a strong passion for software development, AI engineering, and machine learning.</p>
+        <p>I like taking projects from idea to a live site people can actually use: recipe discovery, movie browsing, and deep Bible study tools.</p>
+        <div class="facts">
+          <div class="fact"><b>Education</b>UTSA, Computer Science</div>
+          <div class="fact"><b>Interests</b>Software dev, AI, ML</div>
+          <div class="fact"><b>Experience</b>3x SWE intern at Ibm, TACC, OJO</div>
+          <div class="fact"><b>Goal</b>Growth-oriented dev role</div>
         </div>
-
-        <div id="projects" class="section">
-            <h1>Projects</h1>
-            <p>Here are some of the things I've built.</p>
-
-            <div class="projects">
-                <button>
-                    <img src="images/headshot.png" alt="Portfolio" width="75">
-                    <h3>Portfolio</h3>
-                    <h5>The site you are currently on showcasing some of my work</h5>
-                </button>
-
-                <a href="https://www.flavorquest.blog" target="_blank">
-                    <button>
-                        <img src="images/Flavor_copy.png" alt="Flavor Quest" width="75">
-                        <h3>Flavor Quest</h3>
-                        <h5>Recipe finder app with ingredients in your pantry</h5>
-                    </button>
-                </a>
-
-                <a href="https://www.cinescope.blog" target="_blank">
-                    <button>
-                        <img src="images/cinescope_copy.png" alt="Cine Scope" width="75">
-                        <h3>Cine Scope</h3>
-                        <h5>Web app for searching movies and TV shows with detailed information</h5>
-                    </button>
-                </a>
-
-                <button>
-                    <img src="images/under_construction.png" alt="Coming Soon" width="75">
-                    <h3>Coming soon...</h3>
-                    <h5>There is more work coming</h5>
-                </button>
-            </div>
+      </article>
+      <aside class="card skills reveal">
+        <h3>Skills and tools</h3>
+        <div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">Java</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+          <span class="chip">AI / Machine Learning</span>
         </div>
+        <ul class="mini-list">
+          <li><span class="tick">&#10003;</span> Builds and ships live web apps end to end</li>
+          <li><span class="tick">&#10003;</span> Comfortable with APIs, search, and content-heavy UIs</li>
+          <li><span class="tick">&#10003;</span> Currently going deeper on AI and ML fundamentals</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
 
-        <div id="contacts" class="section">
-            <p>Reach me at:</p>
-            <p>Demissiebeniyam@gmail.com</p>
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="proj-head">
+      <div>
+        <p class="kicker">Selected work</p>
+        <h2 class="h2">Projects</h2>
+        <p class="sub">Here are some of the things I have built. Each one is live, so you can click through and try it.</p>
+      </div>
+      <span class="count">4 live projects</span>
+    </div>
 
-            <div class="contacts">
-                <a href="https://github.com/beniyam12" target="_blank">
-                    <button>
-                        <img src="images/github_logo.png" width="25" alt="GitHub">
-                    </button>
-                </a>
-
-                <a href="https://www.linkedin.com/in/beniyam-demissie/" target="_blank">
-                    <button>
-                        <img src="images/Linkedin_logo.png" width="35" alt="LinkedIn">
-                    </button>
-                </a>
-            </div>
+    <!-- Featured: Cairn Bible -->
+    <article class="card featured reveal">
+      <div class="featured-copy">
+        <span class="live"><span aria-hidden="true">&#9679;</span> Featured, live now</span>
+        <h3>Cairn Bible</h3>
+        <p class="tagline">Scripture. Commentary. Context.</p>
+        <p class="desc">A Bible study app that brings together the translations and commentaries that shaped how the Church reads Scripture, from the Greek and Hebrew text to voices like Augustine and Luther, so you can study it for yourself.</p>
+        <ul class="feat-list">
+          <li><b>Multiple translations</b> side by side in a fast reader</li>
+          <li><b>Original languages:</b> Greek NT and Hebrew OT with plain-English glosses, Strong&#8217;s definitions, and full word concordance</li>
+          <li><b>Classic commentaries,</b> verse by verse: Augustine, Geneva 1599 notes, Cambridge Bible, and more</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Bible study</span>
+          <span class="tag">Greek + Hebrew</span>
+          <span class="tag">Commentaries</span>
+          <span class="tag">React</span>
         </div>
-    </body>
+        <div class="cta-row" style="margin-top:0">
+          <a class="btn btn-primary" href="https://cairnbible.com" target="_blank" rel="noopener">Try Cairn Bible <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-window">
+          <div class="mock-bar"><i></i><i></i><i></i>&nbsp; Cairn Bible, John 1</div>
+          <div class="mock-body">
+            <p class="mock-ref">John 1:1, ESV</p>
+            <p class="mock-verse">In the beginning was the Word, and the Word was with God, and the Word was God.</p>
+            <div class="mock-note"><b>Augustine, Tractates on John:</b> verse-indexed excerpts trace the Word through the Gospel, line by line.</div>
+            <div class="mock-row"><span class="mock-pill">Greek: logos</span><span class="mock-pill">Strong&#8217;s</span><span class="mock-pill">Concordance</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="grid">
+      <article class="card p-card reveal">
+        <div class="thumb flavor"><img src="images/Flavor_copy.png" alt="Flavor Quest app icon" width="208" height="208" loading="lazy" decoding="async"></div>
+        <div class="p-body">
+          <h3>Flavor Quest</h3>
+          <p>Recipe finder app that matches recipes to the ingredients already in your pantry.</p>
+          <div class="tags"><span class="tag">Recipes</span><span class="tag">Pantry-first</span><span class="tag">Web app</span></div>
+          <div class="p-foot">
+            <a class="visit" href="https://www.flavorquest.blog" target="_blank" rel="noopener">Visit live <span aria-hidden="true">&rarr;</span></a>
+            <span class="ext">flavorquest.blog</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-card reveal">
+        <div class="thumb cine"><img src="images/cinescope_copy.png" alt="Cine Scope app icon" width="208" height="208" loading="lazy" decoding="async"></div>
+        <div class="p-body">
+          <h3>Cine Scope</h3>
+          <p>Web app for searching movies and TV shows with detailed information.</p>
+          <div class="tags"><span class="tag">Movies + TV</span><span class="tag">Search</span><span class="tag">Web app</span></div>
+          <div class="p-foot">
+            <a class="visit" href="https://www.cinescope.blog" target="_blank" rel="noopener">Visit live <span aria-hidden="true">&rarr;</span></a>
+            <span class="ext">cinescope.blog</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-card reveal">
+        <div class="thumb me"><img src="images/beniyam_portfolio.jpg" alt="Portrait of Beniyam Demissie" width="350" height="233" loading="lazy" decoding="async"></div>
+        <div class="p-body">
+          <h3>Portfolio</h3>
+          <p>The static, fast-loading site you are on now, showcasing my work.</p>
+          <div class="tags"><span class="tag">Static site</span><span class="tag">HTML + CSS</span><span class="tag">No build step</span></div>
+          <div class="p-foot">
+            <a class="visit" href="#top">You are here <span aria-hidden="true">&uarr;</span></a>
+            <span class="ext">this page</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <p class="kicker">Contact</p>
+    <h2 class="h2">Let&#8217;s talk</h2>
+    <p class="sub">The fastest way to reach me is email. I am happy to talk about my experience, opportunities or project feedback.</p>
+    <div class="contact reveal" style="margin-top:22px">
+      <div>
+        <h2>Reach me at:</h2>
+        <p>Currently open to new opportunities and collaborations.</p>
+        <div class="mail-card">
+          <span aria-hidden="true">&#9993;</span>
+          <a href="mailto:Demissiebeniyam@gmail.com">Demissiebeniyam@gmail.com</a>
+          <button class="copy" id="copyBtn" type="button">Copy</button>
+        </div>
+      </div>
+      <div class="socials">
+        <a class="soc" href="https://github.com/beniyam12" target="_blank" rel="noopener">
+          <img src="images/github_logo.png" alt="" width="26" height="26" loading="lazy" decoding="async">
+          <span>GitHub<small>github.com/beniyam12</small></span>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="soc" href="https://www.linkedin.com/in/beniyam-d/" target="_blank" rel="noopener">
+          <img src="images/Linkedin_logo.png" alt="" width="26" height="26" loading="lazy" decoding="async">
+          <span>LinkedIn<small>in/beniyam-demissie</small></span>
+          <span class="go" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; <span id="year">2026</span> Beniyam Demissie. All rights reserved.</span>
+    <span>Static HTML + CSS</span>
+  </div>
+</footer>
+
+<div class="toast" id="copyToast" role="status" aria-live="polite">Copied to clipboard</div>
+
+<script>
+// Mobile nav, footer year, copy email, and gentle reveal. All optional: page works with JS off.
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var links = document.getElementById('navLinks');
+  if (btn && links) {
+    btn.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function(e){
+      if (e.target.tagName === 'A') links.classList.remove('open');
+    });
+  }
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+  var heroCopy = document.getElementById('heroCopy');
+  if (heroCopy) {
+    heroCopy.addEventListener('click', function(){
+      var email = heroCopy.getAttribute('data-email');
+      var toast = document.getElementById('copyToast');
+      var toastTimer = null;
+      function done(){
+        if (!toast) return;
+        toast.classList.add('show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){
+          toast.classList.remove('show');
+        }, 1600);
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    });
+  }
+  var copy = document.getElementById('copyBtn');
+  if (copy && navigator.clipboard) {
+    copy.addEventListener('click', function(){
+      navigator.clipboard.writeText('Demissiebeniyam@gmail.com').then(function(){
+        copy.textContent = 'Copied';
+        setTimeout(function(){ copy.textContent = 'Copy'; }, 1600);
+      });
+    });
+  } else if (copy) { copy.style.display = 'none'; }
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
 </html>
